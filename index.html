@@ -1,0 +1,33 @@
+ <html>
+  
+  <body>
+  Name: <input type="text" name="name" class="form-control" id="name"  />
+   Email: <input type="text" name="name" class="form-control" id="email"  />
+    Subject: <input type="text" name="name" class="form-control" id="subject"  />
+	 Message: <input type="text" name="name" class="form-control" id="message"  />
+	 <input type="submit" id = "b1" onClick="insert_value()" class="btn" value="Send message">
+  </body>
+  
+  
+  <script>
+  
+    var script_url ="Paste Web app URL here";
+  var emailcheck=false;
+  // Make an AJAX call to Google Script
+  function insert_value() {
+  	var name= $("#name").val();
+	var email= $("#email").val();
+	var subject= $("#subject").val();
+	var message= $("#message").val();
+   var url = script_url+"?callback=ctrlq&message="+message+"&subject="+subject+"&email="+email+"&name="+name+"&action=insert"; 
+    var request = jQuery.ajax({
+      crossDomain: true,
+      url: url ,
+      method: "GET",
+      dataType: "jsonp"
+    });
+}
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</html>
